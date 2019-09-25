@@ -9,6 +9,5 @@ import lombok.Setter;
 public class ShortenDTO {
 
     private String original;
-    private String shorten;
 
 }

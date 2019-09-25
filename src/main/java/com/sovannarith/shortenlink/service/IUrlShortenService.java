@@ -6,4 +6,5 @@ public interface IUrlShortenService {
 
     public UrlShorten save(String original);
 
+    UrlShorten getByShorten(String shorten);
 }

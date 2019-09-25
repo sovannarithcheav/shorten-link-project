@@ -1,6 +1,7 @@
 package com.sovannarith.shortenlink.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.bytebuddy.utility.RandomString;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 @Table(name = "url_shorten")
 @Setter
 @Getter
+@NoArgsConstructor
 public class UrlShorten {
 
     public UrlShorten(String original) {
@@ -31,7 +33,8 @@ public class UrlShorten {
         if (createdDate == null) createdDate = new Date();
         if (shorten == null) {
             String key = RandomString.make(10);
-            shorten = "http://localhost:8080/" + key;
+//            shorten = "http://localhost:8080/" + key;
+            shorten = key;
         }
         if (active == null) active = true;
     }
