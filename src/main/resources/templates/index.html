@@ -1,10 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Welcome</title>
+    <link rel="icon" href="https://i.imgur.com/IarwFXz.png">
+    <link href="webjars/bootstrap/4.2.1/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
 <body>
-    <center><H1>HELLO</H1></center>
+<div class="container">
+    <form name="shortenForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="link">Input your link:</label>
+                    <input class="form-control" id="link">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <form>
+                    <div class="input-group" style="margin-top: 30px;">
+                        <input type="text" class="form-control" placeholder="Shorten Url"
+                               id="copy-input">
+                        <span class="input-group-btn">
+                            <button onclick="doCopy()" class="btn btn-default" type="button" id="copy-button"
+                                    data-toggle="tooltip" data-placement="button" title="Copy to Clipboard">
+                                 Copy
+                            </button>
+                         </span>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <button type="button" id="btn-shorten" onclick="doShorten()" class="btn btn-secondary">Shorten</button>
+    </form>
+
+</div>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="webjars/popper.js/1.14.3/umd/popper.js"></script>
+<script type="text/javascript">
+    function doCopy() {
+        var copyText = document.getElementById("copy-input");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+    }
+    
+    function doShorten() {
+        var original = $('#link').val();
+        $.ajax({
+            url: '/',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({"original":original}),
+            success: function( data ){
+                var url = window.location.origin;
+               $('#copy-input').val(url + '/' + data.shorten);
+            }
+        });
+    }
+</script>
 </body>
 </html>

@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping
 public class MainController {
 
     @Autowired
     private IUrlShortenService shortenService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public UrlShorten save(@RequestBody ShortenDTO shortenDTO) {
         return shortenService.save(shortenDTO.getOriginal());
     }
