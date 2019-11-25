@@ -16,6 +16,6 @@ public class UrlShortenService implements IUrlShortenService {
 
     @Override
     public UrlShorten getByShorten(String shorten) {
-        return Links.urls.stream().findFirst().filter(urlShorten -> urlShorten.getShorten().equals(shorten)).orElseGet(UrlShorten::new);
+        return Links.urls.stream().filter(urlShorten -> urlShorten.getShorten().equals(shorten)).findFirst().orElseGet(UrlShorten::new);
     }
 }
