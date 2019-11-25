@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.bytebuddy.utility.RandomString;
-
-import javax.persistence.*;
+//
+//import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "url_shorten")
+//@Entity
+//@Table(name = "url_shorten")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -24,8 +24,8 @@ public class UrlShorten {
         }
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
     private String original;
@@ -33,7 +33,7 @@ public class UrlShorten {
     private Date createdDate;
     private Boolean active;
 
-    @PrePersist
+//    @PrePersist
     void prePersist() {
         if (createdDate == null) createdDate = new Date();
         if (shorten == null) {

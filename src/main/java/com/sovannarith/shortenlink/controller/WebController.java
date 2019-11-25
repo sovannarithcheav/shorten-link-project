@@ -8,7 +8,7 @@ public class WebController {
 
     @RequestMapping({"", "/index"})
     public String returnIndex() {
-        return "/index";
+        return "index";
     }
 
 }
