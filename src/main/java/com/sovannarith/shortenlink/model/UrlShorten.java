@@ -1,5 +1,6 @@
 package com.sovannarith.shortenlink.model;
 
+import com.sovannarith.shortenlink.model.component.Links;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,10 @@ public class UrlShorten {
 
     public UrlShorten(String original) {
         this.original = original;
+        if (this.Id == null) {
+            this.Id = Links.urls.size() + 1;
+            prePersist();
+        }
     }
 
     @Id
