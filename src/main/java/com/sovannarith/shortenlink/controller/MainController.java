@@ -4,8 +4,13 @@ import com.sovannarith.shortenlink.model.UrlShorten;
 import com.sovannarith.shortenlink.model.dto.ShortenDTO;
 import com.sovannarith.shortenlink.service.IUrlShortenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping
@@ -20,9 +25,20 @@ public class MainController {
     }
 
     @GetMapping("/{shorten}")
-    public ModelAndView redirectWithUsingRedirectPrefix(@PathVariable String shorten) {
+    public ResponseEntity<Object> redirectWithUsingRedirectPrefix(@PathVariable String shorten) {
         UrlShorten urlShorten = shortenService.getByShorten(shorten);
-        return new ModelAndView("redirect:" + urlShorten.getOriginal());
+        HttpHeaders httpHeaders = new HttpHeaders();
+        String url = urlShorten.getOriginal();
+        if (!url.startsWith("http"))
+            url = "http://" + url;
+        URI uri = null;
+        try {
+            uri = new URI(url);
+        } catch (URISyntaxException e) {
+            return ResponseEntity.badRequest().build();
+        }
+        httpHeaders.setLocation(uri);
+        return new ResponseEntity<>(httpHeaders, HttpStatus.SEE_OTHER);
     }
 
 }
