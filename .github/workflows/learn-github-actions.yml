@@ -9,7 +9,6 @@ jobs:
   notify:
     name: Notify to Telegram
     runs-on: self-hosted
-    needs: [build]
     steps:
       - name: Release notification
         uses: appleboy/telegram-action@master
