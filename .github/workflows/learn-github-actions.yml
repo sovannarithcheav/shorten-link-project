@@ -10,6 +10,7 @@ jobs:
     name: Notify to Telegram
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Release notification
         uses: appleboy/telegram-action@master
         with:
