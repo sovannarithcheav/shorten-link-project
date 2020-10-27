@@ -30,10 +30,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Release notification
+      - name: Notify stage 1
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
-          message: "*bold text* **${{github.repository}}**: Release **${{ github.event.release.tag_name }}** published by **${{github.actor}}**"
+          message: "*Notify stage 1* **${{github.repository}}**: Release **${{ github.event.release.tag_name }}** published by **${{github.actor}}**"
+
+      - name: Notify stage 2
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown
+          message: "*Notify stage 2* *${{github.repository}}*: Release *${{ github.event.release.tag_name }}* published by *${{github.actor}}*"
