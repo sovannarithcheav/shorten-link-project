@@ -39,5 +39,4 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           format: markdown
-          parse_mode: markdown
-          message: "**${{github.repository}}**: Release **${{ github.event.release.tag_name }}** published by **${{github.actor}}**"
+          message: "*bold \*text* **${{github.repository}}**: Release **${{ github.event.release.tag_name }}** published by **${{github.actor}}**"
