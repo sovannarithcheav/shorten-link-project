@@ -2,8 +2,7 @@ name: learn-github-actions
 on:
   push:
     # Sequence of patterns matched against refs/heads
-    branches:
-      - master
+    branches: [master, develop]
     # Sequence of patterns matched against refs/tags
     tags:
       - v*
