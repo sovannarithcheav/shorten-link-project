@@ -2,7 +2,7 @@ name: learn-github-actions
 on:
   push:
     # Sequence of patterns matched against refs/heads
-    branches: [master, develop]
+    branches: [develop]
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
             - First Change
             - Second Change
           draft: false
-          prerelease: true
+          prerelease: false
   notify:
     name: Notify to Telegram
     runs-on: ubuntu-latest
