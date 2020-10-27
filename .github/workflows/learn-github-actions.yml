@@ -8,7 +8,7 @@ jobs:
       - name: send custom message with args
   notify:
     name: Notify to Telegram
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Release notification
         uses: appleboy/telegram-action@master
