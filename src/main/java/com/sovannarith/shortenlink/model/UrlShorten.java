@@ -10,6 +10,7 @@ import net.bytebuddy.utility.RandomString;
 import java.util.Date;
 
 //@Entity
+// TODO: LOL
 //@Table(name = "url_shorten")
 @Setter
 @Getter
