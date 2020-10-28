@@ -23,7 +23,7 @@ jobs:
             ## Changes in this Release
             - First Change
             - Second Change
-            - Third Change ..
+            - Third Change ...
           draft: false
           prerelease: true
   notify:
