@@ -1,8 +1,8 @@
-name: learn-github-actions
+name: Release Tag
 on:
-  push:
-    # Sequence of patterns matched against refs/heads
-    branches: [develop]
+  pull_request:
+    branches: [master]
+    types: [closed]
 
 jobs:
   build:
